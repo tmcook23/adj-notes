@@ -16,7 +16,6 @@ br.open('https://report.boonecountymo.org/mrcjava/servlet/SH01_MP.I00290s?max_ro
 html = br.response().read()
 
 
-print html
 # Set up is done
 # Now need to use Beautiful Soup to take our diagnosis and use it to pull information
 
@@ -24,15 +23,18 @@ print html
 
 
 # Transform the HTML into a BeautifulSoup object
-#soup = BeautifulSoup(html, "html.parser")
+soup = BeautifulSoup(html, "html.parser")
 
 # Find the main table using both the "align" and "class" attributes
-#main_table = soup.find('table',
-    #{'align': 'center',
-    #'class': ['collapse', 'shadow', 'BCSDTable']
-#})
+main_table = soup.find('table',
+	{'align': 'center',
+	'class': ['collapse', 'shadow', 'BCSDTable']
+})
+# Lines 29-32 are one line of code broken down for readability
 
 # Now get the data from each table row
-#for row in main_table.find_all('tr'):
- #   data = [cell.text for cell in row.find_all('td')]
+for row in main_table.find_all('tr'):
+	data = [cell.text for cell in row.find_all('td')] #on the right we have the loop
+	print data
+	
   #  writer.writerow(data)
