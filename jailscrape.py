@@ -35,6 +35,6 @@ main_table = soup.find('table',
 # Now get the data from each table row
 for row in main_table.find_all('tr'):
 	data = [cell.text for cell in row.find_all('td')] #on the right we have the loop
-	print data
+	#print data
+	writer.writerow(data)
 	
-  #  writer.writerow(data)
